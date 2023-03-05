@@ -1,0 +1,16 @@
+#
+# Edit Lock-Stake file. CAUTION: Please do not change.
+#
+# Information about current Edit Lock Owner.
+#
+LockStakeVersion               1.1
+LoginName                      rhuang36
+HostName                       greyjoy.ece.jhu.edu
+ProcessIdentifier              20359
+ProcessCreationTime_UTC        1677865472
+ProcessCreationTime_Readable   Fri Mar  3 12:44:32 2023 EST
+AppIdentifier                  /cadence/installs/IC617/tools/dfII/bin/64bit/libManager
+OSType                         lnx86
+ReasonForPlacingEditLock       log file
+FilePathUsedToEditLock         /raid/spring2023/rhuang36/520.492/libManager.log
+TimeEditLocked                 Fri Mar  3 12:44:59 2023 EST

@@ -1,0 +1,29 @@
+//
+// File created by Gaspar Tognetti. March 2016. 
+//
+// AMSD BLOCK Control file
+//
+
+// Use options like this to customize your simulation:
+//
+// usim_opt  sim_mode=s
+// usim_opt  speed=8
+// usim_opt  mt=12
+
+amsd{
+ie connrules=CR_full_fast vsup=1.2 tr=150p txdel=10n discipline=logic_12
+}
+
+// Other Connect Rules:
+//
+// CR_full_fast
+// CR_full
+// CR_basic
+// CR_inhconn_full_fast
+// CR_ss_full_fast
+// CR_inhconn_full
+// CR_ss_full
+
+// documentation here: 
+//
+// /cadence/installs/INCISIVE142/doc/amssimug

@@ -1,0 +1,9 @@
+# Do not remove or change these header lines.
+# markNetOptions file version 1.0
+viaLayers(
+("poly" "drawing") ("cc" "drawing") ("metal1" "drawing") t
+("metal1" "drawing") ("via" "drawing") ("metal2" "drawing") t
+("metal2" "drawing") ("via2" "drawing") ("metal3" "drawing") t
+("metal3" "drawing") ("via3" "drawing") ("metal4" "drawing") t
+("metal2" "drawing") ("via4" "drawing") ("metal5" "drawing") t
+)

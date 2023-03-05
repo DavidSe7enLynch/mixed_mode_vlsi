@@ -1,0 +1,142 @@
+; load my key bindings from home directory
+if( isFile("./.cdskeys.il") then
+	load("./.cdskeys.il"))
+
+; load typical .cdsenv file
+envLoadFile("./.cdsenv")
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;	 set default model libraries for spectre     ;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;; Code example extracted from Virtuoso® Analog Design Environment L
+;;;; User Guide: "/cadence/installs/IC616/doc/anasimhelp/anasimhelp.pdf", pp. 128
+
+kit_ver=getShellEnvVar("KIT_VER")
+
+asiSetEnvOptionVal(asiGetTool('spectre) "modelFiles"
+list(
+	list(strcat(kit_ver "/models/spectre/standalone/ami06N.m" ) )
+	list(strcat(kit_ver "/models/spectre/standalone/ami06P.m" ) )
+	list(strcat(kit_ver "/models/spectre/standalone/ami16N.m" ) )
+	list(strcat(kit_ver "/models/spectre/standalone/ami16P.m" ) )
+	list(strcat(kit_ver "/models/spectre/standalone/hp10N.m" ) )
+	list(strcat(kit_ver "/models/spectre/standalone/hp10P.m" ) )
+	list(strcat(kit_ver "/models/spectre/standalone/hp14tbN.m" ) )
+	list(strcat(kit_ver "/models/spectre/standalone/hp14tbP.m" ) )
+	list(strcat(kit_ver "/models/spectre/standalone/tsmc18dN.m" ) )
+	list(strcat(kit_ver "/models/spectre/standalone/tsmc18dP.m" ) )
+	list(strcat(kit_ver "/models/spectre/standalone/tsmc20N.m" ) )
+	list(strcat(kit_ver "/models/spectre/standalone/tsmc20P.m" ) )
+	list(strcat(kit_ver "/models/spectre/standalone/tsmc25N.m" ) )
+	list(strcat(kit_ver "/models/spectre/standalone/tsmc25P.m" ) )
+	list(strcat(kit_ver "/models/spectre/standalone/tsmc25dN.m" ) )
+	list(strcat(kit_ver "/models/spectre/standalone/tsmc25dP.m" ) )
+	list(strcat(kit_ver "/models/spectre/standalone/tsmc35N.m" ) )
+	list(strcat(kit_ver "/models/spectre/standalone/tsmc35P.m" ) )
+))
+
+;; SET LIBRARIES FOR ULTRASIM
+asiSetEnvOptionVal(asiGetTool('UltraSim) "modelFiles"
+list(
+	list(strcat(kit_ver "/models/spectre/standalone/ami06N.m" ) )
+	list(strcat(kit_ver "/models/spectre/standalone/ami06P.m" ) )
+	list(strcat(kit_ver "/models/spectre/standalone/ami16N.m" ) )
+	list(strcat(kit_ver "/models/spectre/standalone/ami16P.m" ) )
+	list(strcat(kit_ver "/models/spectre/standalone/hp10N.m" ) )
+	list(strcat(kit_ver "/models/spectre/standalone/hp10P.m" ) )
+	list(strcat(kit_ver "/models/spectre/standalone/hp14tbN.m" ) )
+	list(strcat(kit_ver "/models/spectre/standalone/hp14tbP.m" ) )
+	list(strcat(kit_ver "/models/spectre/standalone/tsmc18dN.m" ) )
+	list(strcat(kit_ver "/models/spectre/standalone/tsmc18dP.m" ) )
+	list(strcat(kit_ver "/models/spectre/standalone/tsmc20N.m" ) )
+	list(strcat(kit_ver "/models/spectre/standalone/tsmc20P.m" ) )
+	list(strcat(kit_ver "/models/spectre/standalone/tsmc25N.m" ) )
+	list(strcat(kit_ver "/models/spectre/standalone/tsmc25P.m" ) )
+	list(strcat(kit_ver "/models/spectre/standalone/tsmc25dN.m" ) )
+	list(strcat(kit_ver "/models/spectre/standalone/tsmc25dP.m" ) )
+	list(strcat(kit_ver "/models/spectre/standalone/tsmc35N.m" ) )
+	list(strcat(kit_ver "/models/spectre/standalone/tsmc35P.m" ) )
+))
+
+;; SET LIBRARIES FOR AMS
+asiSetEnvOptionVal(asiGetTool('ams) "modelFiles"
+list(
+	list(strcat(kit_ver "/models/spectre/standalone/ami06N.m" ) )
+	list(strcat(kit_ver "/models/spectre/standalone/ami06P.m" ) )
+	list(strcat(kit_ver "/models/spectre/standalone/ami16N.m" ) )
+	list(strcat(kit_ver "/models/spectre/standalone/ami16P.m" ) )
+	list(strcat(kit_ver "/models/spectre/standalone/hp10N.m" ) )
+	list(strcat(kit_ver "/models/spectre/standalone/hp10P.m" ) )
+	list(strcat(kit_ver "/models/spectre/standalone/hp14tbN.m" ) )
+	list(strcat(kit_ver "/models/spectre/standalone/hp14tbP.m" ) )
+	list(strcat(kit_ver "/models/spectre/standalone/tsmc18dN.m" ) )
+	list(strcat(kit_ver "/models/spectre/standalone/tsmc18dP.m" ) )
+	list(strcat(kit_ver "/models/spectre/standalone/tsmc20N.m" ) )
+	list(strcat(kit_ver "/models/spectre/standalone/tsmc20P.m" ) )
+	list(strcat(kit_ver "/models/spectre/standalone/tsmc25N.m" ) )
+	list(strcat(kit_ver "/models/spectre/standalone/tsmc25P.m" ) )
+	list(strcat(kit_ver "/models/spectre/standalone/tsmc25dN.m" ) )
+	list(strcat(kit_ver "/models/spectre/standalone/tsmc25dP.m" ) )
+	list(strcat(kit_ver "/models/spectre/standalone/tsmc35N.m" ) )
+	list(strcat(kit_ver "/models/spectre/standalone/tsmc35P.m" ) )
+))
+
+; Spectre settings:
+
+spectre_aps=getShellEnvVar("SPECTRE_APS")
+
+if(spectre_aps=="TRUE" then
+   envSetVal("spectre.turboOpts" "uniMode"  'string  "APS")
+   envSetVal("spectre.turboOpts" "apsplus"  'boolean  t)
+   printf("Accelerated Parallel Simulator (APS) enabled.\n")
+else
+   if(spectre_aps=="FALSE" then
+   	printf("Accelerated Parallel Simulator (APS) disabled.\n")
+   else
+   warn("Invalid variable value for: SPECTRE_APS. Use TRUE or FALSE in ./ENVARS")
+)
+)
+
+envSetVal("asimenv.startup" "simulator" 'string "spectre")
+envSetVal("asimenv.startup" "projectDir" 'string "~/cadence/simulation")
+envSetVal("spectre.outputs" "save" 'string "selected")
+envSetVal("spectre.outputs" "currents" 'string "selected")
+envSetVal("ams.outputs" "save" 'string "selected")
+envSetVal("ams.outputs" "netLevelsToSave" 'string "selected")
+envSetVal("ams.outputs" "cmNetLevelsToSave" 'string "selected")
+envSetVal("ams.outputs" "cmSave" 'string "ports")
+
+; show data points in simulation
+
+;envSetVal("viva.trace" "symbolsOn" 'string "true")
+;envSetVal("viva.trace" "symbolStyle" 'string "Dot")
+
+
+; ADXL options
+
+envSetVal( "adexl.distribute" "defaultRunInParallel" 'boolean t )
+envSetVal( "adexl.distribute" "defaultPerRunNumJobs" 'int 12 )
+
+; AMS options
+
+;envSetVal("ams.envOpts" "netlisterMode" 'string "AMS-UNL")
+;envSetVal("ams.ncverilogOpts" "optsFile" 'string "include_hdl_file.cmf") ; must run with AMS-UNL netlisting
+
+envSetVal("ams.envOpts" "netlisterMode" 'string "OSS-based")
+envSetVal("ams.elabOpts" "discipline" 'string "")
+envSetVal("ams.ncverilogOpts" "filesOnIrunCmdLine" 'string "./amsd.scs")
+envSetVal("ams.envOpts" "useIeSetup" 'boolean t)
+
+;envSetVal("ams.opts" "gmin" 'string "1e-15")
+;envSetVal("ams.opts" "gmindc" 'string "1e-15")
+;envSetVal("ams.opts" "iabstol" 'string "1e-15")
+
+envSetVal("ams.UltraSimOpts" "sim_mode" 'string "Spice (S)")
+envSetVal("ams.UltraSimOpts" "mt" 'string "12")
+envSetVal("ams.envOpts" "solver" 'string "UltraSim")
+
+; more options here: /cadence/installs/IC7/tools.lnx86/dfII/etc/tools/ams
+
+if( isFile( "display_custom.drf" ) then
+    drLoadDrf("display_custom.drf" nil))

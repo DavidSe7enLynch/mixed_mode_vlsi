@@ -1,0 +1,27 @@
+t 2 Vref inputOutput
+
+n 1 vdd!
+n 0 gnd!
+n 2 /Vref
+n 4 /net10
+n 5 /net14
+
+; nmos4 Instance /N1 = auLvs device Q0
+d nmos D G S B (p D S)
+i 0 nmos 4 5 2 0 " m 1 l 720e-9 w 900e-9 "
+
+; nmos4 Instance /N0 = auLvs device Q1
+i 1 nmos 5 5 0 0 " m 1 l 720e-9 w 900e-9 "
+
+; pmos4 Instance /P2 = auLvs device Q2
+d pmos D G S B (p D S)
+i 2 pmos 4 4 1 1 " m 1 l 720e-9 w 900e-9 "
+
+; pmos4 Instance /P1 = auLvs device Q3
+i 3 pmos 5 4 1 1 " m 1 l 720e-9 w 900e-9 "
+
+; pmos4 Instance /P0 = auLvs device Q4
+i 4 pmos 5 4 1 1 " m 1 l 720e-9 w 900e-9 "
+t 0 gnd! global
+t 1 vdd! global
+

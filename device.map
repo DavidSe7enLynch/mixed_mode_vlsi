@@ -1,0 +1,7 @@
+# devSelect := resistor subc
+devSelect := nfet nfet
+#propMap := wt wt
+#devSelect := nfet nfet
+#propMap := wt wf
+
+

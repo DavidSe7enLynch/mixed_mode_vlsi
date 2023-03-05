@@ -1,0 +1,48 @@
+######################################################################
+# Environment variables for the NCSU Kit     		     #
+######################################################################
+# Environment variable for Cadence startup script
+#
+export KIT_VER=/cadence/kits/installs/NCSU/ncsu/V1.6.0.beta
+export IC_VER=/cadence/installs/IC617
+export XCELIUM_VER=/cadence/installs/XCELIUM1903_010
+export SPECTRE_VER=/cadence/installs/SPECTRE181_421
+
+export CDK_DIR=${KIT_VER}
+export NCSU_CDK_DIR=${KIT_VER}
+
+#
+# Generic environment variable
+#
+export LM_LICENSE_FILE=27000@sigma.ece.jhu.edu
+#
+# Path to Cadence applications
+#
+export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+export PATH=${IC_VER}/tools.lnx86/bin:${PATH}
+export PATH=${IC_VER}/tools.lnx86/dfII/bin:${PATH}
+export PATH=${XCELIUM_VER}/tools.lnx86/bin:${PATH}
+export PATH=${SPECTRE_VER}/tools.lnx86/bin:${PATH}
+export PATH=${SPECTRE_VER}/bin:${PATH}
+
+#
+# Cadence customization
+#
+# Read only the .cdsenv in the current directory
+export CDS_LOAD_ENV="CWD"
+# Don't know what this is for
+export SPECTRE_DEFAULTS="-E"
+# To enable combining analog and digital netlists
+export CDS_Netlisting_Mode="Analog"
+# Force Cadence to use 64 bit versions for following tools.
+# virtuoso 616 needs 64 bits in order to load .cdsplotinit
+# spectre 131 needs 64 bit to view large montecarlo results
+# export CDS_AUTO_64BIT="spectre;virtuoso"
+export CDS_AUTO_64BIT="all"
+export W3264_NOWARN_UNSUPPORTED_CENTOS=1
+export W3264_NO_HOST_CHECK=1
+# export XCELIUM_INCISIVE_COMPATIBILITY_MODE
+
+# Spectre Options. Accelerated Parallel Simulation (APS) variable.
+export SPECTRE_APS="TRUE"
+export SKIP_CDSLIB_MANAGER

@@ -1,0 +1,9 @@
+; Load the vendor's suggested .cdsenv
+if( isFile( "./.cdsinit_vendor" ) then
+	loadi( "./.cdsinit_vendor" )
+)
+
+; Override with local preferences
+if( isFile( "./.cdsinit_local" ) then
+	loadi( "./.cdsinit_local" )
+)
